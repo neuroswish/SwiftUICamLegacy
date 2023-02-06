@@ -40,6 +40,8 @@ public struct CameraView: UIViewControllerRepresentable {
         self.doubleTapCameraSwitch = doubleTapCameraSwitch
     }
     
+    // actually making the screen
+    // we're making a camera view controller, which is defined in the CameraViewController file
     public func makeUIViewController(context: Context) -> CameraViewController {
         let cameraViewController = CameraViewController()
         cameraViewController.delegate = context.coordinator
@@ -57,6 +59,7 @@ public struct CameraView: UIViewControllerRepresentable {
         return cameraViewController
     }
     
+    // SwiftUI -> UIKit
     public func updateUIViewController(_ cameraViewController: CameraViewController, context: Context) {
         if events.didAskToCapturePhoto {
             cameraViewController.takePhoto()
@@ -80,8 +83,10 @@ public struct CameraView: UIViewControllerRepresentable {
     }
     
     // MARK: Coordinator
+    // UIKit -> SwiftUI
     public class Coordinator: NSObject, CameraViewControllerDelegate {
         
+        // the parent in this case is the CameraView itself, in this case self
         var parent: CameraView
         
         init(_ parent: CameraView) {

@@ -17,6 +17,9 @@ import UIKit
 import AVFoundation
 import Photos
 
+// So this whole file is the primary view controller that presents the camera interface
+
+// This is the video preview
 public class PreviewView: UIView {
     
     var videoPreviewLayer: AVCaptureVideoPreviewLayer {
@@ -26,6 +29,7 @@ public class PreviewView: UIView {
         return layer
     }
     
+    // this variable defines getting and setting the session from the video preview layer
     var session: AVCaptureSession? {
         get {
             return videoPreviewLayer.session
